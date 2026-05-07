@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kris3DLab | Creator Hub</title>
+  <meta name="description" content="Kris3DLab hivatalos creator hubja: Roblox játékok, Discord botok, YouTube projektek és közösségek." />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #020403;
+      --panel: rgba(10, 20, 14, 0.78);
+      --green: #1aca03;
+      --green2: #5cff40;
+      --white: #ffffff;
+      --muted: #a8b3a6;
+      --border: rgba(26, 202, 3, 0.26);
+      --shadow: 0 0 35px rgba(26, 202, 3, 0.24);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(26, 202, 3, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(92, 255, 64, 0.10), transparent 24%),
+        radial-gradient(circle at 50% 90%, rgba(26, 202, 3, 0.13), transparent 30%),
+        var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .blob {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(26, 202, 3, 0.18);
+      filter: blur(90px);
+      z-index: -1;
+      animation: floatBlob 8s ease-in-out infinite alternate;
+    }
+
+    .blob.one { top: 5%; left: -130px; }
+    .blob.two { right: -140px; bottom: 10%; animation-delay: 1.5s; }
+
+    @keyframes floatBlob {
+      from { transform: translateY(0) scale(1); }
+      to { transform: translateY(55px) scale(1.15); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(2, 4, 3, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: auto;
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--green), #0b4d08);
+      box-shadow: 0 0 25px rgba(26, 202, 3, 0.45);
+      color: #031503;
+      font-weight: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green2);
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      max-width: 1180px;
+      margin: auto;
+      padding: 92px 22px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--green2);
+      background: rgba(26, 202, 3, 0.08);
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green2);
+      box-shadow: 0 0 16px var(--green2);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.7); opacity: 0.45; }
+    }
+
+    h1 {
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -4px;
+      margin-bottom: 22px;
+      animation: fadeUp 0.9s ease 0.1s both;
+    }
+
+    h1 span {
+      color: var(--green2);
+      text-shadow: 0 0 32px rgba(26, 202, 3, 0.55);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      animation: fadeUp 0.9s ease 0.2s both;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp 0.9s ease 0.3s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s;
+      border: 1px solid var(--border);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--green), #0c7a09);
+      color: #031503;
+      box-shadow: 0 0 30px rgba(26, 202, 3, 0.35);
+    }
+
+    .btn.secondary {
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 34px rgba(26, 202, 3, 0.38);
+    }
+
+    .hero-card {
+      min-height: 470px;
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, rgba(26,202,3,0.16), transparent 45%),
+        rgba(5, 9, 7, 0.78);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      animation: cardIn 1s ease both;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(120deg, transparent, rgba(92,255,64,0.34), transparent);
+      transform: translateX(-100%);
+      animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      45%, 100% { transform: translateX(100%); }
+    }
+
+    .screen {
+      position: relative;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 20px;
+      z-index: 2;
+    }
+
+    .window-top {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green);
+      opacity: 0.85;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 28px;
+      color: var(--green2);
+      margin-bottom: 5px;
+    }
+
+    .stat small {
+      color: var(--muted);
+    }
+
+    .console {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(26,202,3,0.22);
+      color: #d9ffd5;
+      font-family: Consolas, monospace;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .console span { color: var(--green2); }
+
+    section {
+      max-width: 1180px;
+      margin: auto;
+      padding: 80px 22px;
+    }
+
+    .section-title {
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: 0 0 20px rgba(0,0,0,0.22);
+      transition: 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -50px auto;
+      width: 120px;
+      height: 120px;
+      background: rgba(26,202,3,0.18);
+      filter: blur(30px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(92,255,64,0.7);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(26,202,3,0.14);
+      border: 1px solid var(--border);
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(26,202,3,0.10);
+      color: var(--green2);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .profile-box {
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(26,202,3,0.18), rgba(255,255,255,0.04));
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 125px;
+      height: 125px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, var(--green), #073b06);
+      display: grid;
+      place-items: center;
+      color: #031503;
+      font-size: 42px;
+      font-weight: 1000;
+      box-shadow: 0 0 40px rgba(26,202,3,0.45);
+      margin-bottom: 20px;
+    }
+
+    .profile-box h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .profile-box p, .text-box p {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .text-box {
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 28px;
+    }
+
+    .list {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .list div {
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      color: #dafed5;
+    }
+
+    .cta {
+      margin-top: 30px;
+      padding: 34px;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(26,202,3,0.18), rgba(255,255,255,0.04)),
+        rgba(5, 9, 7, 0.78);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 35px 22px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.25);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: 0.75s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: scale(0.92) rotate(2deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero, .about {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-card {
+        min-height: 390px;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .grid, .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">K3D</div>
+        <span>Kris3DLab</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#projektek">Projektek</a>
+        <a href="#rolam">Rólam</a>
+        <a href="#linkek">Linkek</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="tag"><span class="pulse"></span> Roblox • YouTube • Discord • Dev</div>
+        <h1>Kris3D<span>Lab</span><br>Creator Hub</h1>
+        <p>
+          Egy helyen minden Kris3DLab projekt: Roblox játékok, Discord közösségek,
+          botok, fejlesztések és tartalmak. Ez az oldal GitHub Pages-re készült,
+          gyors, modern és mobilon is jól néz ki.
+        </p>
+
+        <div class="buttons">
+          <a class="btn primary" href="#projektek">Projektek megnézése</a>
+          <a class="btn secondary" href="#linkek">Linkek</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="screen">
+          <div class="window-top">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <b>3K+</b>
+              <small>YouTube közösség</small>
+            </div>
+            <div class="stat">
+              <b>95+</b>
+              <small>M99N bot szerver</small>
+            </div>
+            <div class="stat">
+              <b>5+</b>
+              <small>Roblox projekt</small>
+            </div>
+            <div class="stat">
+              <b>100%</b>
+              <small>Magyar vibe</small>
+            </div>
+          </div>
+
+          <div class="console">
+            <div><span>&gt;</span> Loading Kris3DLab projects...</div>
+            <div><span>&gt;</span> Magyar Grow a Garden found</div>
+            <div><span>&gt;</span> M99N Bot online</div>
+            <div><span>&gt;</span> Creator Hub ready</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projektek" class="reveal">
+      <div class="section-title">
+        <h2>Projektek</h2>
+        <p>Itt vannak a fontosabb Roblox, Discord és webes projektek. Később mindegyikhez rakhatsz külön képet, linket vagy GitHub repositoryt.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">🌱</div>
+          <h3>Magyar Grow a Garden</h3>
+          <p>Magyar Roblox közösségi játék, eventekkel, admin abuse hype-pal és Discord szerverrel.</p>
+          <span class="status">Roblox projekt</span>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌊</div>
+          <h3>Escape Tsunami For Youtubers</h3>
+          <p>YouTuber témájú Roblox élmény, menekülős gameplay és erős közösségi event lehetőségekkel.</p>
+          <span class="status">Fejlesztés alatt</span>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎮</div>
+          <h3>Steal a Magyar Youtuber</h3>
+          <p>Magyar YouTuber témájú Roblox játékötlet, közösségi karakterekkel és vicces pillanatokkal.</p>
+          <span class="status">Community game</span>
+        </div>
+
+        <div class="card">
+          <div class="icon">🌙</div>
+          <h3>M99N Bot</h3>
+          <p>Magyar Discord bot moderációval, fun parancsokkal és all-in-one rendszerrel.</p>
+          <span class="status">Discord bot</span>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛒</div>
+          <h3>K3D SHOP</h3>
+          <p>Digitális szolgáltatások és Discord bot csomagok modern webes megjelenéssel.</p>
+          <span class="status">Web projekt</span>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧪</div>
+          <h3>Kris3DLab Experiments</h3>
+          <p>Kisebb GitHub projektek, Roblox scriptek, UI próbák és hasznos fejlesztői cuccok.</p>
+          <span class="status">GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="rolam" class="reveal">
+      <div class="section-title">
+        <h2>Rólam</h2>
+        <p>Rövid bemutatkozás creator/fejlesztő stílusban.</p>
+      </div>
+
+      <div class="about">
+        <div class="profile-box">
+          <div class="avatar">K3D</div>
+          <h3>Kris3DLab</h3>
+          <p>Magyar Roblox tartalomgyártó, játékötletelő, Discord bot fejlesztő és webes projekt készítő.</p>
+        </div>
+
+        <div class="text-box">
+          <p>
+            A Kris3DLab projektek célja, hogy a magyar Roblox és Discord közösség kapjon
+            egyedi, látványos és szórakoztató élményeket. Itt találod a készülő játékokat,
+            botokat, szervereket és minden olyan fejlesztést, ami később nagyobb projektté nőhet.
+          </p>
+
+          <div class="list">
+            <div>✅ Roblox játékfejlesztés és közösségi eventek</div>
+            <div>✅ Discord szerverek, botok és automatizálás</div>
+            <div>✅ YouTube Shorts / Roblox videós tartalmak</div>
+            <div>✅ GitHub Pages weboldalak és mini toolok</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="linkek" class="reveal">
+      <div class="section-title">
+        <h2>Linkek</h2>
+        <p>Cseréld ki a linkeket a sajátjaidra, és már mehet is GitHub Pages-re.</p>
+      </div>
+
+      <div class="cta">
+        <div>
+          <h2>Csatlakozz a Kris3DLab univerzumhoz</h2>
+          <p>YouTube, Discord, GitHub és Roblox projektek egy helyen.</p>
+        </div>
+
+        <div class="buttons">
+          <a class="btn primary" href="https://www.youtube.com/" target="_blank">YouTube</a>
+          <a class="btn secondary" href="https://discord.gg/hX6bh4Ev4Q" target="_blank">Discord</a>
+          <a class="btn secondary" href="https://github.com/" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Kris3DLab • Made for GitHub Pages
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      for (const el of reveals) {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 90) {
+          el.classList.add('active');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    const heroCard = document.querySelector('.hero-card');
+
+    document.addEventListener('mousemove', (e) => {
+      if (!heroCard) return;
+
+      const x = (window.innerWidth / 2 - e.clientX) / 45;
+      const y = (window.innerHeight / 2 - e.clientY) / 45;
+
+      heroCard.style.transform = `rotateY(${-x}deg) rotateX(${y}deg)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      if (!heroCard) return;
+      heroCard.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  </script>
+</body>
+</html>
