@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K3D Studio Doctor Web</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #070b11;
+      color: white;
+      padding: 30px;
+    }
+
+    .app {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    textarea, pre, input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #101826;
+      color: white;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    textarea {
+      min-height: 250px;
+    }
+
+    button {
+      border: none;
+      border-radius: 16px;
+      padding: 15px 18px;
+      background: linear-gradient(135deg, #1cff7a, #35b8ff);
+      color: #04100a;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .card {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius: 24px;
+      padding: 22px;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="card">
+      <h1>🔧 K3D Studio Doctor Web</h1>
+      <p>Local API teszt felület. Ez ugyanazt az API-t hívja, amit a Roblox Studio plugin is.</p>
+    </div>
+
+    <div class="card">
+      <label>API URL</label>
+      <input id="apiUrl" value="http://localhost:3000/analyze" />
+    </div>
+
+    <div class="card">
+      <h2>Paste log</h2>
+      <textarea id="logInput">Infinite yield possible on 'ReplicatedStorage:WaitForChild("Events")'</textarea>
+      <br><br>
+      <button id="analyzeBtn">Analyze</button>
+    </div>
+
+    <div class="card">
+      <h2>Report</h2>
+      <pre id="output">Report...</pre>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("analyzeBtn").onclick = async () => {
+      const url = document.getElementById("apiUrl").value;
+      const log = document.getElementById("logInput").value;
+
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ log })
+      });
+
+      const data = await res.json();
+
+      document.getElementById("output").textContent =
+        data.report + "\\n\\nActions:\\n" + JSON.stringify(data.actions, null, 2);
+    };
+  </script>
+</body>
+</html>
