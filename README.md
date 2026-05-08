@@ -1,18 +1,18 @@
 <div align="center">
 
-# 🛡️ K3D PROCESS GUARDIAN
+# 🔧 K3D ROBLOX STUDIO DOCTOR PLUGIN
 
-### Safe Windows process monitor & manager
+### Roblox Studio plugin + local web/API debug helper
 
-![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
-![Version](https://img.shields.io/badge/Version-1.0.0-22C55E?style=for-the-badge)
+![Roblox Studio](https://img.shields.io/badge/Roblox-Studio-FF0000?style=for-the-badge&logo=roblox&logoColor=white)
+![Lua](https://img.shields.io/badge/Lua-Plugin-2C2D72?style=for-the-badge&logo=lua&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-API-22C55E?style=for-the-badge&logo=node.js&logoColor=white)
+![Version](https://img.shields.io/badge/Version-0.1.0-35B8FF?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
-![Safe Mode](https://img.shields.io/badge/Safe%20Mode-Enabled-brightgreen?style=for-the-badge&logo=shield&logoColor=white)
 
 <br/>
 
-> 🛡️ **List. Search. Kill. Monitor. Export.** — Process control, de biztonságosabban.
+> Paste log. Analyze. Generate safe patch. Apply with control.
 
 </div>
 
@@ -20,240 +20,212 @@
 
 ## 🎯 Mi ez?
 
-A **K3D PROCESS GUARDIAN** egy PowerShell-alapú Windows folyamatkezelő eszköz, ami segít átlátni és kezelni a futó programokat.
+A **K3D Roblox Studio Doctor Plugin** egy Roblox Studio plugin + local API/web alap, ami segít hibák javításában.
 
-Nem vírus, nem prank, nem agresszív cleaner.  
-Egy egyszerű, nyílt forráskódú utility tool, ami kezdőknek is érthető módon kezeli a process listát.
+A cél:
 
-Hasznos lehet, ha:
-
-- egy program beragad,
-- egy app többször elindul,
-- sok RAM-ot eszik valami,
-- logolni akarod a process műveleteket,
-- gyorsan szeretnél process reportot exportálni.
-
----
-
-## ✨ Funkciók
-
-### 📋 PROCESS LIST
-
-Listázza a legtöbb memóriát használó folyamatokat.
-
-| Funkció | Leírás |
-|:---|:---|
-| Top process lista | Memóriahasználat szerint rendezve |
-| PID megjelenítés | Könnyebb azonosítás |
-| CPU / RAM info | Gyors áttekintés |
-| Path mező | Ha elérhető, mutatja az exe útvonalát |
+- Roblox Studio Output log bemásolása,
+- hiba felismerése,
+- report generálása,
+- safe fixek létrehozása,
+- hiányzó mappák / RemoteEventek létrehozása,
+- patch script generálása,
+- local web/API kapcsolat.
 
 ---
 
-### 🔍 PROCESS SEARCH
+## ⚠️ Fontos
 
-Név alapján kereshetsz futó folyamatokat.
+Ez a projekt **nem töröl automatikusan fontos scripteket**.
 
-Példa:
+Direkt safe módon készült:
+
+- nem töröl DataStore scriptet,
+- nem töröl ModuleScriptet,
+- nem ír át random meglévő scriptet,
+- safe fixeket alkalmaz,
+- patch scriptet generál review-ra.
+
+Egy AI-szerű rendszernek mindig kell jóváhagyás, mert egy rossz automata javítás tönkreteheti a játékot.
+
+---
+
+## 📁 Projekt struktúra
 
 ```txt
-chrome
-discord
-roblox
-notepad
-```
-
----
-
-### 💀 SAFE KILL
-
-Process leállítása PID vagy név alapján.
-
-| Mód | Leírás |
-|:---|:---|
-| Kill by PID | Pontos process ID alapján |
-| Kill by Name | Minden azonos nevű process leállítása |
-| Safe blocklist | Rendszerfolyamatokat nem enged kilőni |
-
----
-
-### 🛡️ GUARDIAN MONITOR
-
-Figyeli a megadott process nevet, és ha elindul, automatikusan leállítja.
-
-Példa:
-
-```txt
-notepad
-someapp
-exampleprocess
-```
-
-> A monitor módot `CTRL + C`-vel lehet leállítani.
-
----
-
-### 📦 EXPORT REPORT
-
-CSV fájlba menti a futó process listát.
-
-Kimenet:
-
-```txt
-process-report.csv
-```
-
----
-
-### 📜 LOG SYSTEM
-
-Minden művelet naplózva van.
-
-Kimenet:
-
-```txt
-guardian-log.txt
-```
-
-Log szintek:
-
-| Szint | Jelentés |
-|:---|:---|
-| `[SYS]` | Program indítás / leállítás |
-| `[INFO]` | Általános információ |
-| `[OK]` | Sikeres művelet |
-| `[WARN]` | Figyelmeztetés |
-| `[BLOCK]` | Safe mode által blokkolt művelet |
-| `[KILL]` | Process leállítás |
-
----
-
-## 🚀 Telepítés
-
-### 1. Letöltés
-
-Töltsd le a repót ZIP-ként, vagy klónozd:
-
-```bash
-git clone https://github.com/yourname/K3D-Process-Guardian.git
-cd K3D-Process-Guardian
-```
-
----
-
-### 2. Futtatás
-
-PowerShellből:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File ".\K3D_Process_Guardian.ps1"
-```
-
-A script automatikusan kér rendszergazdai jogot, ha szükséges.
-
----
-
-## ⚡ Gyors Start
-
-```txt
-1. Indítsd el a scriptet.
-2. Válaszd az 1-es opciót a process lista megtekintéséhez.
-3. Keresd meg a célprogramot.
-4. Kill by PID vagy Kill by Name.
-5. Ha kell, exportálj reportot CSV-be.
-```
-
----
-
-## 🛡️ Protected Process List
-
-A tool alapból blokkolja a fontos Windows folyamatokat, például:
-
-```txt
-system
-csrss
-wininit
-winlogon
-services
-lsass
-svchost
-explorer
-dwm
-registry
-```
-
-Ez azért van, hogy véletlenül se lőj ki kritikus rendszerfolyamatokat.
-
----
-
-## 📁 Fájlstruktúra
-
-```txt
-K3D-Process-Guardian/
-├── K3D_Process_Guardian.ps1
+K3D-Roblox-Studio-Doctor-Plugin/
+├── plugin/
+│   └── K3D_Studio_Doctor.plugin.lua
+│
+├── server/
+│   ├── server.js
+│   └── package.json
+│
+├── web/
+│   └── index.html
+│
 ├── README.md
 ├── LICENSE
 └── .gitignore
 ```
 
-A script futás közben létrehozhatja:
+---
+
+## 🔌 Plugin telepítés Roblox Studio-ba
+
+### 1. Plugin fájl
+
+Másold ezt a fájlt:
 
 ```txt
-guardian-log.txt
-process-report.csv
+plugin/K3D_Studio_Doctor.plugin.lua
+```
+
+Roblox Studio plugin mappába.
+
+Windows alatt általában:
+
+```txt
+%LOCALAPPDATA%\Roblox\Plugins
+```
+
+Vagy Studio-ban:
+
+```txt
+Plugins > Plugins Folder
+```
+
+Majd indítsd újra a Roblox Studio-t.
+
+---
+
+## 🌐 Local API indítása
+
+A local API opcionális. A plugin nélküle is tud local analyze-t.
+
+### 1. Menj a server mappába
+
+```bash
+cd server
+```
+
+### 2. Telepítsd a csomagokat
+
+```bash
+npm install
+```
+
+### 3. Indítsd el
+
+```bash
+npm start
+```
+
+API:
+
+```txt
+http://localhost:3000/analyze
 ```
 
 ---
 
-## 🧪 Tesztelt környezet
+## 🧪 Web teszt felület
 
-| Rendszer | Állapot |
+Nyisd meg:
+
+```txt
+web/index.html
+```
+
+Ez a local API-t hívja.
+
+---
+
+## 🛠️ Mit tud javítani?
+
+Jelenlegi safe fixek:
+
+| Hiba | Safe fix |
 |:---|:---|
-| Windows 10 | Támogatott |
-| Windows 11 | Támogatott |
-| PowerShell 5.1+ | Támogatott |
-| PowerShell 7 | Részben támogatott |
+| Infinite yield / WaitForChild | ReplicatedStorage/Events és Modules létrehozás |
+| RemoteEvent hiba | UpdateCurrency és NotifyPlayer RemoteEvent létrehozás |
+| Leaderstats / Coins hiba | Leaderstats.server.lua létrehozás |
+| Patch szükséges | K3D_Patches mappa + patch script |
 
 ---
 
-## 📦 Verziótörténet
+## 🚧 Mit NEM csinál automatikusan?
 
-| Verzió | Változások |
-|:---|:---|
-| `v1.0.0` | Első kiadás: process lista, keresés, safe kill, monitor mód, log, CSV export |
+Nem csinál automatikus destructive műveleteket:
 
----
-
-## ⚠️ Figyelmeztetés
-
-> Ez az eszköz **saját gépen futó saját folyamatok kezelésére** készült.  
-> Ne használd más gépén engedély nélkül.  
-> Ne használj process kill toolokat adatvesztést okozó programokon mentés nélkül.
+- nem töröl scriptet,
+- nem ír át meglévő fő scriptet,
+- nem töröl RemoteEventet,
+- nem töröl ModuleScriptet,
+- nem módosít DataStore rendszert.
 
 ---
 
-## 👤 Fejlesztő
+## 🧠 AI-szerű működés
 
-<div align="center">
+A projekt jelenleg rule-based.  
+Később ráköthető saját AI backend úgy, hogy az API ilyen JSON-t ad vissza:
 
-### **Kris3DLab / K3D Labs**
+```json
+{
+  "report": "Mit talált az AI",
+  "actions": [
+    {
+      "type": "create_folder",
+      "service": "ReplicatedStorage",
+      "name": "Events"
+    },
+    {
+      "type": "create_remote",
+      "name": "UpdateCurrency"
+    }
+  ]
+}
+```
 
-*"Control your processes. Don't break your Windows."*
-
-</div>
+A plugin csak engedélyezett action típusokat hajt végre.
 
 ---
 
-## 📄 Licenc
+## ✅ Engedélyezett action típusok
 
-Nyílt forráskódú, MIT licenc alatt.
+Jelenleg:
 
-<div align="center">
+```txt
+create_folder
+create_remote
+create_leaderstats
+```
+
+Ez azért van, hogy ne tudjon egy hibás backend veszélyes dolgokat csinálni a játékban.
 
 ---
 
-⭐ **Ha hasznos volt, dobj egy stárt a repóra!** ⭐
+## 🧩 Roadmap
 
-🛡️ *K3D PROCESS GUARDIAN — safe control for Windows processes.*
+- script diff preview
+- selected script javítás
+- patch history
+- undo rendszer
+- plugin settings save
+- több RemoteEvent felismerés log alapján
+- Lua parser alap
+- AI backend support OpenAI / local model felé
+- Roblox place health scanner
 
-</div>
+---
+
+## 👤 Készítő
+
+**Kris3DLab / K3D Labs**
+
+---
+
+## 📄 License
+
+MIT License
