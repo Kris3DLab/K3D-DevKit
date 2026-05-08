@@ -90,8 +90,8 @@
 
       const data = await res.json();
 
-      document.getElementById("output").textContent =
-        data.report + "\\n\\nActions:\\n" + JSON.stringify(data.actions, null, 2);
+document.getElementById("output").textContent =
+  data.report + "\n\nActions:\n" + JSON.stringify(data.actions, null, 2);
     };
   </script>
 </body>
