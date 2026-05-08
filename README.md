@@ -1,359 +1,259 @@
-# K3D Roblox Dev Toolkit
+<div align="center">
 
-**K3D Roblox Dev Toolkit** egy kezdőbarát Roblox fejlesztői csomag, ami segít gyorsabban összerakni egy alap Roblox játék rendszerét.
+# 🛡️ K3D PROCESS GUARDIAN
 
-A célja, hogy ne kelljen mindent nulláról újraírni: kapsz kész mintákat RemoteEventekhez, értesítésekhez, shophoz, daily rewardhoz, leaderstatshoz és alap UI animációkhoz.
+### Safe Windows process monitor & manager
 
----
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Version](https://img.shields.io/badge/Version-1.0.0-22C55E?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)
+![Safe Mode](https://img.shields.io/badge/Safe%20Mode-Enabled-brightgreen?style=for-the-badge&logo=shield&logoColor=white)
 
-## Mire jó?
+<br/>
 
-Ez a toolkit azoknak készült, akik Roblox Studio-ban fejlesztenek, de szeretnének gyorsabban haladni.
+> 🛡️ **List. Search. Kill. Monitor. Export.** — Process control, de biztonságosabban.
 
-Használhatod például:
-
-* simulator játékokhoz
-* obby játékokhoz
-* tycoon játékokhoz
-* magyar Roblox projektekhez
-* teszt rendszerekhez
-* kezdő Roblox scripterek tanulásához
+</div>
 
 ---
 
-## Funkciók
+## 🎯 Mi ez?
 
-* Leaderstats rendszer
-* Coins / Gems alap currency példa
-* RemoteEvent mappa automatikus létrehozása
-* Notification rendszer
-* Daily Reward példa
-* Shop rendszer példa
-* UI tween animációk
-* Admin command alap
-* Safe server-client kommunikáció
-* Egyszerűen bővíthető mappastruktúra
+A **K3D PROCESS GUARDIAN** egy PowerShell-alapú Windows folyamatkezelő eszköz, ami segít átlátni és kezelni a futó programokat.
 
----
+Nem vírus, nem prank, nem agresszív cleaner.  
+Egy egyszerű, nyílt forráskódú utility tool, ami kezdőknek is érthető módon kezeli a process listát.
 
-## Mappastruktúra
+Hasznos lehet, ha:
 
-A repó ajánlott felépítése:
-
-```txt
-K3D-Roblox-Dev-Toolkit/
-│
-├── README.md
-├── LICENSE
-│
-├── ServerScriptService/
-│   ├── Main.server.lua
-│   ├── Leaderstats.server.lua
-│   ├── DailyReward.server.lua
-│   └── AdminCommands.server.lua
-│
-├── ReplicatedStorage/
-│   ├── Modules/
-│   │   ├── Config.lua
-│   │   └── NotificationConfig.lua
-│   │
-│   └── Events/
-│       ├── NotifyPlayer
-│       ├── ClaimDailyReward
-│       └── PurchaseItem
-│
-├── StarterGui/
-│   └── K3D_UI/
-│       ├── MainGui
-│       └── UIClient.client.lua
-│
-└── StarterPlayer/
-    └── StarterPlayerScripts/
-        └── ClientInit.client.lua
-```
+- egy program beragad,
+- egy app többször elindul,
+- sok RAM-ot eszik valami,
+- logolni akarod a process műveleteket,
+- gyorsan szeretnél process reportot exportálni.
 
 ---
 
-## Telepítés Roblox Studio-ban
+## ✨ Funkciók
 
-### 1. Nyisd meg a Roblox Studio-t
+### 📋 PROCESS LIST
 
-Nyisd meg a játékodat Roblox Studio-ban.
+Listázza a legtöbb memóriát használó folyamatokat.
 
----
-
-### 2. Hozd létre a mappákat
-
-Hozd létre ezeket:
-
-```txt
-ReplicatedStorage
-└── Events
-└── Modules
-
-ServerScriptService
-StarterGui
-StarterPlayer
-└── StarterPlayerScripts
-```
+| Funkció | Leírás |
+|:---|:---|
+| Top process lista | Memóriahasználat szerint rendezve |
+| PID megjelenítés | Könnyebb azonosítás |
+| CPU / RAM info | Gyors áttekintés |
+| Path mező | Ha elérhető, mutatja az exe útvonalát |
 
 ---
 
-### 3. Másold be a scripteket
+### 🔍 PROCESS SEARCH
 
-A fájlokat mindig a nevük alapján rakd be a megfelelő helyre.
+Név alapján kereshetsz futó folyamatokat.
 
 Példa:
 
 ```txt
-Leaderstats.server.lua
+chrome
+discord
+roblox
+notepad
 ```
 
-helye:
+---
+
+### 💀 SAFE KILL
+
+Process leállítása PID vagy név alapján.
+
+| Mód | Leírás |
+|:---|:---|
+| Kill by PID | Pontos process ID alapján |
+| Kill by Name | Minden azonos nevű process leállítása |
+| Safe blocklist | Rendszerfolyamatokat nem enged kilőni |
+
+---
+
+### 🛡️ GUARDIAN MONITOR
+
+Figyeli a megadott process nevet, és ha elindul, automatikusan leállítja.
+
+Példa:
 
 ```txt
-ServerScriptService/Leaderstats.server.lua
+notepad
+someapp
+exampleprocess
 ```
+
+> A monitor módot `CTRL + C`-vel lehet leállítani.
 
 ---
 
-### 4. Indítsd el a játékot Play módban
+### 📦 EXPORT REPORT
 
-Roblox Studio-ban nyomd meg:
+CSV fájlba menti a futó process listát.
+
+Kimenet:
 
 ```txt
-Play
+process-report.csv
 ```
 
-Ha jól raktad be, a játékosnál megjelenik a leaderstats, például:
+---
+
+### 📜 LOG SYSTEM
+
+Minden művelet naplózva van.
+
+Kimenet:
 
 ```txt
-Coins: 0
-Gems: 0
+guardian-log.txt
+```
+
+Log szintek:
+
+| Szint | Jelentés |
+|:---|:---|
+| `[SYS]` | Program indítás / leállítás |
+| `[INFO]` | Általános információ |
+| `[OK]` | Sikeres művelet |
+| `[WARN]` | Figyelmeztetés |
+| `[BLOCK]` | Safe mode által blokkolt művelet |
+| `[KILL]` | Process leállítás |
+
+---
+
+## 🚀 Telepítés
+
+### 1. Letöltés
+
+Töltsd le a repót ZIP-ként, vagy klónozd:
+
+```bash
+git clone https://github.com/yourname/K3D-Process-Guardian.git
+cd K3D-Process-Guardian
 ```
 
 ---
 
-## Alap leaderstats példa
+### 2. Futtatás
 
-```lua
-local Players = game:GetService("Players")
+PowerShellből:
 
-Players.PlayerAdded:Connect(function(player)
-    local leaderstats = Instance.new("Folder")
-    leaderstats.Name = "leaderstats"
-    leaderstats.Parent = player
-
-    local coins = Instance.new("IntValue")
-    coins.Name = "Coins"
-    coins.Value = 0
-    coins.Parent = leaderstats
-
-    local gems = Instance.new("IntValue")
-    gems.Name = "Gems"
-    gems.Value = 0
-    gems.Parent = leaderstats
-end)
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\K3D_Process_Guardian.ps1"
 ```
 
-Helye:
+A script automatikusan kér rendszergazdai jogot, ha szükséges.
+
+---
+
+## ⚡ Gyors Start
 
 ```txt
-ServerScriptService/Leaderstats.server.lua
+1. Indítsd el a scriptet.
+2. Válaszd az 1-es opciót a process lista megtekintéséhez.
+3. Keresd meg a célprogramot.
+4. Kill by PID vagy Kill by Name.
+5. Ha kell, exportálj reportot CSV-be.
 ```
 
 ---
 
-## RemoteEvent rendszer
+## 🛡️ Protected Process List
 
-A toolkit RemoteEventeket használ a kliens és szerver közötti kommunikációhoz.
-
-Példa Eventek:
+A tool alapból blokkolja a fontos Windows folyamatokat, például:
 
 ```txt
-ReplicatedStorage/Events/NotifyPlayer
-ReplicatedStorage/Events/ClaimDailyReward
-ReplicatedStorage/Events/PurchaseItem
+system
+csrss
+wininit
+winlogon
+services
+lsass
+svchost
+explorer
+dwm
+registry
 ```
 
-Fontos: amit pénzhez, itemhez vagy rewardhoz használsz, azt mindig szerveren ellenőrizd.
+Ez azért van, hogy véletlenül se lőj ki kritikus rendszerfolyamatokat.
 
 ---
 
-## Notification rendszer
-
-A Notification rendszer arra jó, hogy a játékosnak kis üzenetet jeleníts meg.
-
-Példák:
+## 📁 Fájlstruktúra
 
 ```txt
-+100 Coins
-Sikeres vásárlás!
-Nincs elég pénzed!
-Daily reward claimed!
+K3D-Process-Guardian/
+├── K3D_Process_Guardian.ps1
+├── README.md
+├── LICENSE
+└── .gitignore
 ```
 
----
-
-## Shop rendszer példa
-
-A shop rendszer alap logikája:
-
-1. A játékos megnyom egy vásárlás gombot.
-2. A kliens elküldi az item nevét a szervernek.
-3. A szerver ellenőrzi az árat.
-4. Ha van elég pénz, levonja.
-5. A szerver odaadja az itemet vagy unlockolja.
-6. A játékos kap egy notificationt.
-
----
-
-## Daily Reward rendszer
-
-A daily reward rendszer egy napi jutalom példa.
-
-Alap reward:
+A script futás közben létrehozhatja:
 
 ```txt
-1. nap: 100 Coins
-2. nap: 150 Coins
-3. nap: 250 Coins
-4. nap: 1 Gem
-5. nap: 500 Coins
-```
-
-A végleges verzióban DataStore mentéssel is bővíthető.
-
----
-
-## Admin Commands
-
-Alap parancs ötletek:
-
-```txt
-!coins PlayerName 100
-!gems PlayerName 10
-!kick PlayerName
-!speed PlayerName 32
-```
-
-Csak az admin listában lévő user ID-k használhatják.
-
----
-
-## Config példa
-
-```lua
-local Config = {}
-
-Config.Admins = {
-    123456789,
-}
-
-Config.StartingCoins = 0
-Config.StartingGems = 0
-
-Config.ShopItems = {
-    SpeedBoost = {
-        Price = 250,
-        Currency = "Coins"
-    },
-
-    VIPSword = {
-        Price = 1000,
-        Currency = "Coins"
-    }
-}
-
-return Config
-```
-
-Helye:
-
-```txt
-ReplicatedStorage/Modules/Config.lua
+guardian-log.txt
+process-report.csv
 ```
 
 ---
 
-## Kiknek ajánlott?
+## 🧪 Tesztelt környezet
 
-Ez a toolkit főleg kezdőknek és középhaladó Roblox fejlesztőknek ajánlott.
-
-Ha még csak most tanulsz scriptelni, akkor is használhatod, mert minden script mellé kerül magyarázat és pontos hely.
-
----
-
-## Fontos Roblox szabály
-
-Soha ne bízz meg teljesen a kliensben.
-
-Rossz példa:
-
-```lua
--- kliens mondja meg, hogy kapjon 999999 pénzt
-```
-
-Jó példa:
-
-```lua
--- kliens csak kérést küld
--- szerver ellenőrzi és dönt
-```
+| Rendszer | Állapot |
+|:---|:---|
+| Windows 10 | Támogatott |
+| Windows 11 | Támogatott |
+| PowerShell 5.1+ | Támogatott |
+| PowerShell 7 | Részben támogatott |
 
 ---
 
-## Tervezett frissítések
+## 📦 Verziótörténet
 
-* Inventory rendszer
-* Pet system alap
-* Quest system alap
-* Save system DataStore-ral
-* UI template pack
-* Loading screen
-* Teleport rendszer
-* Gamepass ellenőrzés
-* Developer Product példa
+| Verzió | Változások |
+|:---|:---|
+| `v1.0.0` | Első kiadás: process lista, keresés, safe kill, monitor mód, log, CSV export |
 
 ---
 
-## Hogyan használd GitHubon?
+## ⚠️ Figyelmeztetés
 
-1. Hozz létre egy új GitHub repót.
-2. Neve legyen például:
-
-```txt
-K3D-Roblox-Dev-Toolkit
-```
-
-3. Töltsd fel a fájlokat.
-4. Rakj be képernyőképeket a `screenshots` mappába.
-5. A README.md automatikusan meg fog jelenni a GitHub repó főoldalán.
+> Ez az eszköz **saját gépen futó saját folyamatok kezelésére** készült.  
+> Ne használd más gépén engedély nélkül.  
+> Ne használj process kill toolokat adatvesztést okozó programokon mentés nélkül.
 
 ---
 
-## Ajánlott repo leírás
+## 👤 Fejlesztő
 
-```txt
-A beginner-friendly Roblox Dev Toolkit with leaderstats, remotes, notifications, shop, daily rewards and admin command examples.
-```
+<div align="center">
 
----
+### **Kris3DLab / K3D Labs**
 
-## License
+*"Control your processes. Don't break your Windows."*
 
-Ez a projekt szabadon használható tanulásra és saját Roblox projektekhez.
-
-Ajánlott license:
-
-```txt
-MIT License
-```
+</div>
 
 ---
 
-## Készítő
+## 📄 Licenc
 
-Készítette: **Kris3DLab / Kris3Dev**
+Nyílt forráskódú, MIT licenc alatt.
 
-Roblox, Discord és YouTube projektekhez készült fejlesztői toolkit.
+<div align="center">
+
+---
+
+⭐ **Ha hasznos volt, dobj egy stárt a repóra!** ⭐
+
+🛡️ *K3D PROCESS GUARDIAN — safe control for Windows processes.*
+
+</div>
